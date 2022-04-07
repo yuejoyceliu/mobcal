@@ -1,5 +1,5 @@
 # Ion Mobility Calculation (MobCal)
-Calculate the mobilities (cross section) of molecular ions in helium and nitrogen
+Calculate ion mobilities (cross section) in helium and nitrogen.
 
 ## Prepare Input File
 1. Complete Gaussian population analysis and get the output file ("example.log").
