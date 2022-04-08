@@ -5,8 +5,9 @@ nCORES = 28
 NAME = "sample.mfj"
 
 def checkcommand():
-    if len(sys.argv) != 2:
-        raise SystemExit("Usage: python mobcal.py He/N2/Both/Either")
+    options = ["He", "N2", "Both", "Either"]
+    assert len(sys.argv) == 2, "Usage: python mobcal.py {}".format('/'.join(options))
+    assert sys.argv[1] in options, "{} not in [{}]".format(sys.argv[1], ' '.join(options))
     return sys.argv[1]
 
 
@@ -14,10 +15,7 @@ def create_task(fl, key):
     dfolders = []
     if key == "Either":
         while key != "He" and key != "N2":
-            if 1/2 == 0:
-                key = raw_input("Choose the version for " + fl + " : [He or N2] ")
-            else:
-                key = raw_input("Choose the version for " + fl + " : [He or N2] ")
+            key = raw_input("Choose the version for " + fl + " : [He or N2] ")
     elif key == "Both":
         dfolders.append(create_task(fl, "He")[0])
         key =  "N2"
@@ -26,7 +24,7 @@ def create_task(fl, key):
     dfolders.append(dirname)
     os.mkdir(dirname)
     shutil.copyfile(fl, dirname + "/" + NAME) 
-    shutil.copyfile("/usr/lusers/yueliu96/mobcal/mobcal_" + key + ".f", dirname + "/mobcal_" + key + ".f")
+    shutil.copyfile(os.path.expanduser('~')+ "/mobcal/mobcal_" + key + ".f", dirname + "/mobcal_" + key + ".f")
     with open(dirname+"/mobcal.in", "w") as fo:
         fo.write(NAME + "\n")
         fo.write("sample_" + key + ".out\n")
