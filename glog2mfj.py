@@ -40,9 +40,9 @@ def readlog(flog):
         elif POP[0] in line or POP[1] in line:
             pop = i
     if not xyzstarts:
-        raise SystemExit("Error: Not found \"%s\"" % XYZ)
+        raise SystemExit("Error: Not found \"%s\" in %s" % (XYZ, flog))
     if pop == -1:
-        raise SystemExit("Error: Not found \"%s\"" % POP)
+        raise SystemExit("Error: Not found \"%s\" in %s" % (POP, flog))
     # keep the last orientation
     i = xyzstarts[-1] + 5
     xyz = []
