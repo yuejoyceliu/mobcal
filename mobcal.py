@@ -66,7 +66,10 @@ def main():
     key = checkcommand()
     tasks = cpfile(key)
     parallel_run(tasks)
-    print("Reminder: 160 atoms N2 -- 23.5h")
+    reminders = [(160, 23.5), (231, 55.2)]
+    print("Reminder:")
+    for reminder in reminders:
+        print("%5d atoms in N2: %3.1fh" % (reminder[0], reminder[1]))
 
 if __name__=="__main__":
     main()
