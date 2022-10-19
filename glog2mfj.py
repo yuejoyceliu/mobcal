@@ -16,7 +16,7 @@ POP = ["Mulliken charges:", "Mulliken atomic charges:"]
 #periodic table of the element (proton_numer: mass)
 MASS_TABLE = {1:1, 2:4, 3:7, 4:9, 5:11, 6:12, 7:14, 8:16, 9:19, 10:20,
              11:23, 12:24, 13:27, 14:28, 15:31, 16:32, 17:35, 18:40, 19: 30, 20: 40,
-             26:56}
+             26:56, 53:127}
 
 
 def checkcommand():
