@@ -1,5 +1,7 @@
 # Ion Mobility Calculation (MobCal)
 Calculate ion mobility (cross section) in helium and nitrogen on Hyak.
+- atoms supported in N2: H, C, N, O, F, Na, Si, P, S, F, Cl, Fe, Br and I.
+- atoms supported in He: H, C, N, O, F, Na, Si, S and Fe.
 ## Prepare Input File
 1. Complete Gaussian population analysis and get the output file ("example.log").
 2. Make MobCal input file ("example.mfj") based on the Gaussian output file by running `python glog2mfj.py example.log`.
