@@ -8,10 +8,10 @@ def checkcommand():
     options = ["He", "N2", "Both", "Either"]
     assert len(sys.argv) == 2, "Usage: python mobcal.py {}".format('/'.join(options))
     assert sys.argv[1] in options, "{} not in [{}]".format(sys.argv[1], ' '.join(options))
-    return sys.argv[1]
+    return sys.argv[0], sys.argv[1]
 
 
-def create_task(fl, key):
+def create_task(fl, path, key):
     dfolders = []
     if key == "Either":
         while key != "He" and key != "N2":
@@ -24,18 +24,18 @@ def create_task(fl, key):
     dfolders.append(dirname)
     os.mkdir(dirname)
     shutil.copyfile(fl, dirname + "/" + NAME) 
-    shutil.copyfile(os.path.expanduser('~')+ "/mobcal/mobcal_" + key + ".f", dirname + "/mobcal_" + key + ".f")
+    shutil.copyfile(path + "/mobcal_" + key + ".f", dirname + "/mobcal_" + key + ".f")
     with open(dirname+"/mobcal.in", "w") as fo:
         fo.write(NAME + "\n")
         fo.write("sample_" + key + ".out\n")
         fo.write("5013489\n")
     return dfolders
 
-def cpfile(env):
+def cpfile(path, env):
     mfjs = glob.glob("*.mfj")
     tasks = []
     for mfj in mfjs:
-        tasks.extend(create_task(mfj, env))
+        tasks.extend(create_task(mfj, path, env))
     return tasks
 
 
@@ -63,8 +63,10 @@ def parallel_run(dmfj_tasks):
         fo.write('end=$(date +%s)\nlet "etime=($end-$begin)/60"\necho \'Elapsed Time: \'$etime\' min\'')
 
 def main():
-    key = checkcommand()
-    tasks = cpfile(key)
+    path, key = checkcommand()
+    path = path.split('/')
+    path = '/'.join(path[:-1])
+    tasks = cpfile(path, key)
     parallel_run(tasks)
     reminders = [(160, 23.5), (231, 55.2)]
     print("Reminder:")

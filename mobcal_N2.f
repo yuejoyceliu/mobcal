@@ -700,6 +700,36 @@ c
       rhs(iatom)=2.7d0*1.0d-10
       endif
 c
+c     Chlorine
+c
+      if(imass(iatom).eq.35) then
+      itest=1
+      xmass(iatom)=35.00d0
+      eolj(iatom)=dsqrt(eogas*0.2111)*conve*xe
+      rolj(iatom)=dsqrt(rogas*3.6707)*convr*1.0d-10
+      rhs(iatom)=2.7d0*1.0d-10
+      endif
+c
+c     Iodine
+c
+      if(imass(iatom).eq.127) then
+      itest=1
+      xmass(iatom)=127.00d0
+      eolj(iatom)=dsqrt(eogas*0.3153)*conve*xe
+      rolj(iatom)=dsqrt(rogas*4.1850)*convr*1.0d-10
+      rhs(iatom)=2.7d0*1.0d-10
+      endif
+c
+c     bromine
+c
+      if(imass(iatom).eq.80) then
+      itest=1
+      xmass(iatom)=80.00d0
+      eolj(iatom)=dsqrt(eogas*0.2334)*conve*xe
+      rolj(iatom)=dsqrt(rogas*3.8957)*convr*1.0d-10
+      rhs(iatom)=2.7d0*1.0d-10
+      endif
+c
       if(itest.eq.0) then
       write(8,602) iatom
   602 format(1x,'type not defined for atom number',i3)
@@ -2855,6 +2885,36 @@ c
       xmass(iatom)=19.00d0
       eolj(iatom)=dsqrt(eogas*0.0465)*conve*xe
       rolj(iatom)=dsqrt(rogas*3.1285)*convr*1.0d-10
+      rhs(iatom)=2.7d0*1.0d-10
+      endif
+c
+c     Chlorine
+c
+      if(imass(iatom).eq.35) then
+      itest=1
+      xmass(iatom)=35.00d0
+      eolj(iatom)=dsqrt(eogas*0.2111)*conve*xe
+      rolj(iatom)=dsqrt(rogas*3.6707)*convr*1.0d-10
+      rhs(iatom)=2.7d0*1.0d-10
+      endif
+c
+c     Iodine
+c
+      if(imass(iatom).eq.127) then
+      itest=1
+      xmass(iatom)=127.00d0
+      eolj(iatom)=dsqrt(eogas*0.3153)*conve*xe
+      rolj(iatom)=dsqrt(rogas*4.1850)*convr*1.0d-10
+      rhs(iatom)=2.7d0*1.0d-10
+      endif
+c
+c     bromine
+c
+      if(imass(iatom).eq.80) then
+      itest=1
+      xmass(iatom)=80.00d0
+      eolj(iatom)=dsqrt(eogas*0.2334)*conve*xe
+      rolj(iatom)=dsqrt(rogas*3.8957)*convr*1.0d-10
       rhs(iatom)=2.7d0*1.0d-10
       endif
 c
